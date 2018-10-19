@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz');
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin:0;
+    background-color: rgb(47, 51, 63);
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    background-color: white;
+    max-width: 800px;
+    width: 40%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 17px;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: rgb(47, 51, 63);
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.registerbtn:hover {
+    background-color: rgb(47, 51, 90);
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+}
+
+.banner__txt{
+  text-align: center;
+  color: white;
+  font-size: 60px;
+}
+.register__txt{
+  color: rgb(47, 51, 63);
+  font-size: 20px;
+}
+
+.register__links{
+  display: flex;
+  justify-content: space-between;
+}
+.register__login, .register__forgot{
+  text-decoration: none;
+  margin:15px 0;
+  color: black;
+}

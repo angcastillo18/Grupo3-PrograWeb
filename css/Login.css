@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Yanone+Kaffeesatz');
+
+/*Estilos generales*/
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin:0;
+  background-color: rgb(47, 51, 63);
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  letter-spacing: 1.5px;
+}
+/*Estilos del login*/
+.login__txt{
+  text-align: center;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  margin: 0;
+  color: rgb(47, 51, 63);
+}
+
+.banner__txt{
+  text-align: center;
+  color: white;
+  font-size: 60px;
+}
+.login__content{
+    max-width: 800px;
+    width: 40%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+
+}
+.login_form{
+  margin: 0 30px ;
+}
+
+.login__username, .login__password{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 17px;
+}
+
+.button__login{
+  width: 100%;
+  background-color: rgb(47, 51, 63);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.button__login:hover{
+  background-color: rgb(47, 51, 90);
+}
+.login__forgot-register{
+  display: flex;
+  justify-content: space-between;
+}
+/* estilos para poner el icono al lado del  lbl*/
+
+.icon {
+    color: white;
+    background-color: rgb(47, 51, 63);
+    padding: 4px;
+    border-radius: 5px;
+}
+.lbl{
+  font-size: 20px;
+}
+/**/
+/*Estilos del mensaje de error*/
+#msg__error{
+  color: red;
+}
+
+
+.login__recovery,.login__register{
+  text-decoration: none;
+  margin:15px 0;
+  color: black;
+}
+/*Estilos del Footer*/
+.footer__copy{
+  text-align: center;
+  padding: 10px;
+  color: white;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Grupo 3</title>
+    <link rel="stylesheet" href="css/Login.css">
+    <link rel="stylesheet" href="css/fonts.css">
+  </head>
+  <body>
+    <div class="banner">
+      <h1 class="banner__txt">Grupo 3</h1>
+      <div class="login__content">
+        <h3 class="login__txt">Ingresar al sistema</h3>
+        <form class="login_form" action="index.html" method="post">
+          <i class="icon-user icon"></i>
+          <label class="lbl">Usuario:</label><br>
+          <input class="login__username" id="username" type="text" name="username" placeholder="usuario" >
+          <br><br>
+          <i class="icon-unlock-alt icon"></i>
+          <label class="lbl">Contraseña:</label> <br>
+          <input class="login__password" id="password" type="password" name="password" placeholder="contraseña">
+          <br>
+          <label id="msg__error" ></label>
+          <button class="button__login" type="button" name="button" onclick="emptyField()">Ingresar</button>
+          <br>
+          <div class="login__forgot-register">
+            <a class="login__recovery" href="#">Olvidó su contraseña?</a>
+            <a class="login__register" href="registerPage.html">Registrarse</a>
+          </div>
+        </form>
+      </div>
+      <footer>
+        <p class="footer__copy">&copy; Grupo 3 - Todos los derechos reservados</p>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="js/Login.js"></script>
+  </body>
+</html>
