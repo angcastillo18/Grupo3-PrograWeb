@@ -10,6 +10,7 @@ function emptyField(){
 }
 
 function login(){
+  window.alert("h");/*
 	var usuario = document.getElementById("username").value;
 	var contraseña = document.getElementById("password").value;
 
@@ -18,11 +19,11 @@ function login(){
   	var errorCode = error.code;
   	var errorMessage = error.message;
   	// ...
-		}
-	);
+		}*/
+	}
 
 
-}
+
 
 
 firebase.auth().onAuthStateChanged(function(user) {
