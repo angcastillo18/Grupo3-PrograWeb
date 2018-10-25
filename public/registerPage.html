@@ -11,8 +11,6 @@
     <form action="#">
   <div class="container">
 
-    <label class="register__txt" for="name"> Nombre : </label>
-    <input type="text" name="name" placeholder="nombre completo">
 
     <label class="register__txt" for="email">Correo electrónico :</label>
     <input type="email" placeholder="correo electrónico" name="email" id="correo">
@@ -33,8 +31,20 @@
   </div>
 
 </form>
-  <script src="js//FirebaseSession.js"></script>script>
+  <script src="js//FirebaseSession.js"></script>
   <script src="js//Registro.js"></script>
-  
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+    <script>
+  // Initialize Firebase
+      var config = {
+      apiKey: "AIzaSyBJfI9p91158CuvOmxPjhNQwuwxfT4enZg",
+      authDomain: "prograweb-fb7c1.firebaseapp.com",
+      databaseURL: "https://prograweb-fb7c1.firebaseio.com",
+      projectId: "prograweb-fb7c1",
+      storageBucket: "prograweb-fb7c1.appspot.com",
+      messagingSenderId: "698758184402"
+    };
+    firebase.initializeApp(config);
+    </script>
   </body>
 </html>
