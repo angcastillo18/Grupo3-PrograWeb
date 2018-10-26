@@ -1,22 +1,10 @@
-//validación de los inputs, texto vacio
 
-
-
-function emptyField(){
-  var user=document.getElementById("username").value;
-  var password=document.getElementById("password").value;
-  var messageError=document.getElementById("msg__error");
-  messageError.innerHTML="";
-  if (user.length==0 || password.length==0) {
-    messageError.innerHTML="Rellene todos los campos";
-  }
-}
 
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     location.href ='main.html';
-    alert("ha iniciado sesión");
+    
   } else {
     // No user is signed in.
   }
@@ -31,10 +19,10 @@ function login(){
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    if (errorCode === ('auth/user-not-found' || 'auth/wrong-password')) {
-      alert('La contraseña que ha ingresado es incorrecta');
+    if (errorCode === ('auth/invalid-email' || 'auth/wrong-password')) {
+      alert('La contraseña o usuario que ha ingresado es inválido.'+'\nInténtelo nuevamente.');
     } else if(errorCode === 'auth/user-not-found'){
-      alert('El usuario no existe');
+      alert('El siguiente usuario no se encuentra registrado');
     }else{
       
     }
@@ -54,7 +42,7 @@ function login(){
   // ...
   });
    }
-*/
+
 
 
 
@@ -69,3 +57,4 @@ function recuperarContra(){
   // An error happened.
   });
 }
+*/
