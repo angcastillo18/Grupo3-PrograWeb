@@ -5,24 +5,30 @@
     <title>Registro</title>
     <link rel="stylesheet" href="css//Register.css">
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
   </head>
   <body>
     <h1 class="banner__txt">Crear cuenta</h1>
-    <form action="#">
-  <div class="container">
+    <form action="#" method="post" id="form" onsubmit="registro()">
+    <div class="container">
 
+    <label class="register__txt" for="usuario">Usuario :</label>
+    <input type="text" placeholder="Usuario" name="usuario" id="user">
+
+    <label class="register__txt" for="nomape">Nombres y apellidos :</label>
+    <input type="text" placeholder="Nombres y apellidos" name="nomape" id="name">
 
     <label class="register__txt" for="email">Correo electrónico :</label>
-    <input type="email" placeholder="correo electrónico" name="email" id="correo">
+    <input type="email" placeholder="Correo electrónico" name="email" id="mail">
+  
+    <label class="register__txt" for="password">Contraseña :</label>
+    <input type="password" placeholder="Contraseña" name="psw" id="psw">
 
-    <label class="register__txt" for="user">Usuario :</label>
-    <input type="text" placeholder="usuario" name="psw">
-
-    <label class="register__txt" for="psw">Contraseña :</label>
-    <input type="password" placeholder="contraseña" name="psw-repeat" id="contra">
+    <label class="register__txt" for="psw">N° de teléfono(Opcional) :</label>
+    <input type="text" placeholder="Número de teléfono" name="phone" id="phone">
     <hr>
 
-    <button type="submit" class="registerbtn" onclick="registro()">Crear</button>
+    <button type="submit" class="registerbtn" >Crear Usuario</button>
 
     <div class="register__links">
       <a class="register__login" href="index.html">Ingresar</a>

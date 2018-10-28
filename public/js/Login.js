@@ -1,5 +1,5 @@
-
-
+// Get a reference to the database service
+var database = firebase.database();
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -9,6 +9,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
   }
 });
+
+
 
 function login(){
     var email = document.getElementById("username").value;
@@ -42,7 +44,7 @@ function login(){
   // ...
   });
    }
-
+*/
 
 
 
@@ -57,4 +59,8 @@ function recuperarContra(){
   // An error happened.
   });
 }
-*/
+
+
+function leerData(){
+
+}
