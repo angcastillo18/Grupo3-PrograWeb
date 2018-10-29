@@ -1,15 +1,12 @@
-// An index to track Ada's memberships
-{
-  "users": {
-    "usuarios": [
-      {
-      "nombres": "Ada Lovelace",
-      "apellidos": "Ada",
-      "usuario":"Adalove123",
-      "edad":"Lovelace",
-      "correo":"Alove123@gmail.com",
-      "sexo": "M",
+{  
+   "users":{  
+      "userid":"Ada Lovelace",
+      "name":"Ada",
+      "mail":"Adalove123",
+      "psw":"Lovelace",
+      "phone":{  
+         "exist":true,
+         "number":965166152
       }
-    ]
-  }
+   }
 }

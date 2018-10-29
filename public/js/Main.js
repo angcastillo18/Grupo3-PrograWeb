@@ -12,6 +12,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     
   } else {
   	alert("ha cerrado sesión");
-    location.href ='Login.html';
+    location.href ='index.html';
   }
 });

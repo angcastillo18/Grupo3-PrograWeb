@@ -33,42 +33,42 @@
       <h1 class="banner__txt">Grupo 3</h1>
       <div class="login__content">
         <h3 class="login__txt">Ingresar al sistema</h3>
-        <form class="login_form" action="index.html" method="post">
+        <div class="login_form" method="post">
           <i class="icon">-</i>
           <label class="lbl">Usuario:</label><br>
-          <input class="login__username" id="username" type="text" name="username" placeholder="usuario" >
+          <input class="login__username" id="username" type="text" name="username" placeholder="usuario">
           <br><br>
           <i class="icon">-</i>
           <label class="lbl">Contraseña:</label> <br>
           <input class="login__password" id="password" type="password" name="password" placeholder="contraseña">
           <br>
           <label id="msg__error" ></label>
-          <button class="button__login" type="button" name="button" onclick="login()" >Ingresar</button>
+          <button class="button__login" type="submit" name="button" onclick="login()">Ingresar</button>
           <br>
           <div class="login__forgot-register">
             <a class="login__recovery" href="#">Olvidó su contraseña?</a>
             <a class="login__register" href="#">Otras opciones de inicio</a>
             <a class="login__register" href="registerPage.html">Registrarse</a>
           </div>
-        </form>
+        </div>
       </div>
       <footer>
         <p class="footer__copy">&copy; Grupo 3 - Todos los derechos reservados</p>
       </footer>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
-    <script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+<script>
   // Initialize Firebase
-      var config = {
-      apiKey: "AIzaSyBJfI9p91158CuvOmxPjhNQwuwxfT4enZg",
-      authDomain: "prograweb-fb7c1.firebaseapp.com",
-      databaseURL: "https://prograweb-fb7c1.firebaseio.com",
-      projectId: "prograweb-fb7c1",
-      storageBucket: "prograweb-fb7c1.appspot.com",
-      messagingSenderId: "698758184402"
-    };
-    firebase.initializeApp(config);
-    </script>
+  var config = {
+    apiKey: "AIzaSyBJfI9p91158CuvOmxPjhNQwuwxfT4enZg",
+    authDomain: "prograweb-fb7c1.firebaseapp.com",
+    databaseURL: "https://prograweb-fb7c1.firebaseio.com",
+    projectId: "prograweb-fb7c1",
+    storageBucket: "prograweb-fb7c1.appspot.com",
+    messagingSenderId: "698758184402"
+  };
+  firebase.initializeApp(config);
+</script>
     <script src="js//Login.js"></script>
 
     

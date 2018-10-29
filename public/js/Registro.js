@@ -1,4 +1,4 @@
-//var database = firebase.database();
+
 
 
 
@@ -19,7 +19,8 @@ function registro(){
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
       }else {
-        alert("Correo creado satisfactoriamente")
+        alert("Cuenta creada satisfactoriamente")
+        
       }
       console.log(error);
     });
@@ -34,7 +35,6 @@ function verificarDatos() {
   var name = document.getElementById("name").value;
   var mail = document.getElementById("mail").value;
   var psw = document.getElementById("psw").value;
-  var phone = document.getElementById("phone").value;
   var regex = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/;
 
 alert(mail+psw+phone);
@@ -59,13 +59,13 @@ alert(mail+psw+phone);
    alert('La contraseña debe tener al menos 6 caracteres');
    return false;
  }
- else if ( (!(/^\d{9}$/.test(phone)))&&phone.length>0) {
-   // Si no se cumple la condicion...
-   alert('Debe ingresar un número de teléfono válido, si no está seguro, deje la casilla en blanco');
-   return false;
- }
- 
   // Si el script ha llegado a este punto, todas las condiciones
   // se han cumplido, por lo que se devuelve el valor true
   return true;
+}
+
+function grabarDatos(){
+  var database = firebase.database();
+  var ref = database.ref("prograweb")
+
 }
