@@ -1,3 +1,16 @@
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    var user = firebase.auth().currentUser;
+    if (user.emailVerified==false) {
+      
+    }
+  } else {
+    // No user is signed in.
+  }
+});
+
+
+
 
 
 
@@ -7,9 +20,10 @@ function registro(){
   if (verificarDatos()===true) {
     var mail = document.getElementById("mail").value;
     var psw = document.getElementById("psw").value;
+
     firebase.auth().createUserWithEmailAndPassword(mail,psw)
     .catch(function(error) {
-    // Handle Errors here.
+      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode == 'auth/weak-password') {
@@ -18,17 +32,10 @@ function registro(){
         alert('El correo '+mail+" ya está en uso");
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
-      }else {
-        alert("Cuenta creada satisfactoriamente")
-        
       }
-      console.log(error);
     });
   }
 }
-  
-
-
 
 function verificarDatos() {
   var user = document.getElementById("user").value;
@@ -36,20 +43,17 @@ function verificarDatos() {
   var mail = document.getElementById("mail").value;
   var psw = document.getElementById("psw").value;
   var regex = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/;
-
-alert(mail+psw+phone);
-
- if ( (user == null || user.length == 0 || /^\s+$/.test(user)) ) {
+  if ( (user == null || user.length == 0 || /^\s+$/.test(user)) ) {
    // Si no se cumple la condicion...
    alert('Es obligatorio indicar el nombre de usuario que desea usar');
    return false;
- }
- else if ( name == null || name.length == 0 || /^\s+$/.test(name) ) {
+  }
+  else if ( name == null || name.length == 0 || /^\s+$/.test(name) ) {
    // Si no se cumple la condicion...
    alert('Es obligatorio llenar el campo de nombre y apellidos ');
    return false;
- }
- else if ( (regex.test(mail))||mail.length == 0 || mail==null){
+  }
+  else if ( (regex.test(mail))||mail.length == 0 || mail==null){
    // Si no se cumple la condicion...
    alert('Debe ingresar un correo válido');
    return false;
@@ -64,8 +68,15 @@ alert(mail+psw+phone);
   return true;
 }
 
-function grabarDatos(){
-  var database = firebase.database();
-  var ref = database.ref("prograweb")
-
+function emailVerificacion(){
+  var user = firebase.auth().currentUser;
+  user.sendEmailVerification().then(function() {
+    return true;
+  }).catch(function(error) {
+    return false;
+  });
 }
+
+
+
+
