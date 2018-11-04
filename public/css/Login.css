@@ -97,3 +97,14 @@ h1,h2,h3,h4,h5,h6{
   padding: 10px;
   color: white;
 }
+
+#log{
+  text-align: right;
+  color: #f1f1f1;
+  border: 2px solid white;
+
+  font-size: 20px;
+  margin-left: 90%;  
+  width: 9.5%;
+  
+}

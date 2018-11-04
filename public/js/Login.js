@@ -1,30 +1,22 @@
 // Get a reference to the database service
 var database = firebase.database();
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    var user = firebase.auth().currentUser;
-    if (user!=null) {
-      var emailVerified = user.emailVerified
-      if (user.emailVerified==true) {
-        alert("Ha iniciado sesión correctamente");
-        console.log("registrado");
-      }else{
-        alert("Verifique el correo de activación enviado a su cuenta de correo "+ user.email);
-        firebase.auth().signOut().then(function() 
-          { 
-          }).catch(function(error) {
-          // An error happened.
-        });
+function observer(status){
+  if (status==true) {
+    firebase.auth().onAuthStateChanged(function(user) {
+      var logStatus = document.getElementById("log");
+      if (user) {
+        if (verifyMail()==false){
+          logStatus.innerHTML = "nv";
+          logStatus.style.backgroundColor = "red";
+        }else{
+          logStatus.innerHTML = "nv";
+          logStatus.style.backgroundColor = "blue";
+        }
       }
-    }
-  } else {
-
+    });
   }
-});
-
-
-
+}
+  
 function login(){
   var email = document.getElementById("username").value;
   var contra = document.getElementById("password").value;
@@ -56,4 +48,17 @@ function recuperarContra(){
   }).catch(function(error) {
   // An error happened.
   });
+}
+
+function verifyMail(){
+  var user = firebase.auth().currentUser;
+  if (user!=null) {
+    var emailVerified = user.emailVerified;
+    if (user.emailVerified==true) {
+        return true;
+        console.log("registrado");
+    }else{
+        return false;
+    }
+  }
 }

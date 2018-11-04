@@ -29,6 +29,7 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
   </head>
   <body>
+    <div id="log">Logueado on</div>
     <div class="banner">
       <h1 class="banner__txt">Grupo 3</h1>
       <div class="login__content">
@@ -46,8 +47,7 @@
           <button class="button__login" type="submit" name="button" onclick="login()">Ingresar</button>
           <br>
           <div class="login__forgot-register">
-            <a class="login__recovery" href="#">Olvidó su contraseña?</a>
-            <a class="login__register" href="#">Otras opciones de inicio</a>
+            <a class="login__recovery" href="#">¿Olvidó su contraseña?</a>
             <a class="login__register" href="registerPage.html">Registrarse</a>
           </div>
         </div>
@@ -56,23 +56,19 @@
         <p class="footer__copy">&copy; Grupo 3 - Todos los derechos reservados</p>
       </footer>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
-<script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script>
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBJfI9p91158CuvOmxPjhNQwuwxfT4enZg",
-    authDomain: "prograweb-fb7c1.firebaseapp.com",
-    databaseURL: "https://prograweb-fb7c1.firebaseio.com",
-    projectId: "prograweb-fb7c1",
-    storageBucket: "prograweb-fb7c1.appspot.com",
-    messagingSenderId: "698758184402"
-  };
-  firebase.initializeApp(config);
-</script>
+      var config = {
+      apiKey: "AIzaSyBJfI9p91158CuvOmxPjhNQwuwxfT4enZg",
+      authDomain: "prograweb-fb7c1.firebaseapp.com",
+      databaseURL: "https://prograweb-fb7c1.firebaseio.com",
+      projectId: "prograweb-fb7c1",
+      storageBucket: "prograweb-fb7c1.appspot.com",
+      messagingSenderId: "698758184402"
+    };
+    firebase.initializeApp(config);
+    </script>
     <script src="js//Login.js"></script>
-
-    
-    
-
-  </body>
+</body>
 </html>

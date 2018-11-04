@@ -1,19 +1,3 @@
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    var user = firebase.auth().currentUser;
-    if (user.emailVerified==false) {
-      
-    }
-  } else {
-    // No user is signed in.
-  }
-});
-
-
-
-
-
-
 
 function registro(){
 
@@ -32,8 +16,16 @@ function registro(){
         alert('El correo '+mail+" ya está en uso");
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
+      }else{
+        alert("cuenta correcta");
       }
     });
+    var user = firebase.auth().currentUser;
+    if (user) {
+   // User is signed in.
+    }else {
+  // No user is signed in.
+    }
   }
 }
 
