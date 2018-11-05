@@ -9,9 +9,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     
-    
   } else {
-  	alert("ha cerrado sesión");
-    location.href ='index.html';
+  	location.href ='index.html';
   }
 });

@@ -34,20 +34,6 @@ function login(){
   }
 
 
-    /*
-    function login(){
-  var email = document.getElementById("username").value;
-  var contra = document.getElementById("password").value;
-
-   firebase.auth().signInWithEmailAndPassword(email, contra).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-  });
-   }
-*/
-
 
 
 

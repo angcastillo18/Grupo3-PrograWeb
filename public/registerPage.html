@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1 class="banner__txt">Crear cuenta</h1>
-    <div action="#" method="post" id="form" onsubmit="registro()">
+    <div action="#" method="post" id="form" >
     <div class="container">
 
     <label class="register__txt" for="usuario">Usuario :</label>
@@ -25,7 +25,9 @@
     <input type="password" placeholder="Contraseña" name="psw" id="psw">
     <hr>
 
-    <button type="submit" class="registerbtn" >Crear Usuario</button>
+
+    
+    <button type="submit" class="registerbtn" name = "button" onclick="registro()">Crear Usuario</button>
 
     <div class="register__links">
       <a class="register__login" href="index.html">Ingresar</a>

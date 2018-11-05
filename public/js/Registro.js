@@ -3,12 +3,15 @@
 
 
 function registro(){
-
+  //var ref = firebase.database().ref();
+  var user = document.getElementById("user").value;
+  var name = document.getElementById("name").value;
+  var mail = document.getElementById("mail").value;
+  var psw = document.getElementById("psw").value;
   if (verificarDatos()===true) {
-    var mail = document.getElementById("mail").value;
-    var psw = document.getElementById("psw").value;
-    firebase.auth().createUserWithEmailAndPassword(mail,psw)
-    .catch(function(error) {
+    
+    firebase.auth().createUserWithEmailAndPassword(mail,psw).catch(function(error) 
+    {
     // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -18,14 +21,16 @@ function registro(){
         alert('El correo '+mail+" ya está en uso");
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
-      }else {
+      }else if(errorCode==null){
         alert("Cuenta creada satisfactoriamente")
-        
       }
-      console.log(error);
+      console.log(errorCode);
     });
   }
+
 }
+
+
   
 
 
@@ -37,7 +42,7 @@ function verificarDatos() {
   var psw = document.getElementById("psw").value;
   var regex = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/;
 
-alert(mail+psw+phone);
+
 
  if ( (user == null || user.length == 0 || /^\s+$/.test(user)) ) {
    // Si no se cumple la condicion...
@@ -64,8 +69,3 @@ alert(mail+psw+phone);
   return true;
 }
 
-function grabarDatos(){
-  var database = firebase.database();
-  var ref = database.ref("prograweb")
-
-}
