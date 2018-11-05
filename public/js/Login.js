@@ -1,21 +1,20 @@
-// Get a reference to the database service
-var database = firebase.database();
-function observer(status){
-  if (status==true) {
-    firebase.auth().onAuthStateChanged(function(user) {
-      var logStatus = document.getElementById("log");
+firebase.auth().onAuthStateChanged(function(user) {
+      var logStatus = document.getElementById("logon");
+      var logStatus2 = document.getElementById("logoff");
       if (user) {
         if (verifyMail()==false){
-          logStatus.innerHTML = "nv";
+          logStatus.innerHTML = "No verificado";
           logStatus.style.backgroundColor = "red";
+          logStatus2.innerHTML="Bienvenido "+ user.displayName;
         }else{
-          logStatus.innerHTML = "nv";
+          logStatus.innerHTML = "Verificado";
           logStatus.style.backgroundColor = "blue";
         }
+      }else{
+        logStatus.innerHTML = "No ha iniciado sesión";
+        logStatus2.style.display("none");
       }
     });
-  }
-}
   
 function login(){
   var email = document.getElementById("username").value;
@@ -30,9 +29,14 @@ function login(){
         alert('La contraseña o usuario que ha ingresado es inválido.'+'\nInténtelo nuevamente.');
       } else if(errorCode === 'auth/user-not-found'){
         alert('El siguiente usuario no se encuentra registrado');
+      } else if(errorCode==="auth/invalid-email"){
+        alert('La contraseña o usuario que ha ingresado es inválido.'+'\nInténtelo nuevamente.');
       }
       console.log(error);
     });
+  if (currentUser()==true) {
+    alert("Inicio de sesión correcto");
+  }
 }
 
 
@@ -60,5 +64,14 @@ function verifyMail(){
     }else{
         return false;
     }
+  }
+}
+
+function currentUser(){
+  var user = firebase.auth().currentUser;
+  if (user) {
+    return true;
+  } else {
+    return false;
   }
 }
