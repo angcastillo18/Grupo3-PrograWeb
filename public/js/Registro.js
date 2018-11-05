@@ -22,25 +22,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
 function registro(){
-  //var ref = firebase.database().ref();
-  var user = document.getElementById("user").value;
-  var name = document.getElementById("name").value;
-  var mail = document.getElementById("mail").value;
-  var psw = document.getElementById("psw").value;
+
   if (verificarDatos()===true) {
-<<<<<<< HEAD
-    
-    firebase.auth().createUserWithEmailAndPassword(mail,psw).catch(function(error) 
-    {
-    // Handle Errors here.
-=======
     var mail = document.getElementById("mail").value;
     var psw = document.getElementById("psw").value;
 
     firebase.auth().createUserWithEmailAndPassword(mail,psw)
     .catch(function(error) {
       // Handle Errors here.
->>>>>>> e15dd62f4c6f88fe7c5052aaf37671d7ca691b15
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode == 'auth/weak-password') {
@@ -49,12 +38,6 @@ function registro(){
         alert('El correo '+mail+" ya está en uso");
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
-<<<<<<< HEAD
-      }else if(errorCode==null){
-        alert("Cuenta creada satisfactoriamente")
-      }
-      console.log(errorCode);
-=======
       }
        if (currentUser()==true) {
         alert("Usuario creado satisfactoriamente");
@@ -65,19 +48,9 @@ function registro(){
         var name = document.getElementById("name").value;
         var user = document.getElementById("user").value;
       }
->>>>>>> e15dd62f4c6f88fe7c5052aaf37671d7ca691b15
     });
   }
-
 }
-<<<<<<< HEAD
-
-
-  
-
-
-=======
->>>>>>> e15dd62f4c6f88fe7c5052aaf37671d7ca691b15
 
 function verificarDatos() {
   var user = document.getElementById("user").value;
@@ -85,18 +58,11 @@ function verificarDatos() {
   var mail = document.getElementById("mail").value;
   var psw = document.getElementById("psw").value;
   var regex = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/;
-<<<<<<< HEAD
-
-
-
- if ( (user == null || user.length == 0 || /^\s+$/.test(user)) ) {
-=======
   if (currentUser()==true) {
     alert("Debe cerrar sesión para poder crear una nueva cuenta.")
     return false;
   }
   else if ( (user == null || user.length == 0 || /^\s+$/.test(user)) ) {
->>>>>>> e15dd62f4c6f88fe7c5052aaf37671d7ca691b15
    // Si no se cumple la condicion...
    alert('Es obligatorio indicar el nombre de usuario que desea usar');
    return false;
@@ -121,8 +87,6 @@ function verificarDatos() {
   return true;
 }
 
-<<<<<<< HEAD
-=======
 function sendEmailVerification(){
   var user = firebase.auth().currentUser;
 user.sendEmailVerification().then(function() {
@@ -154,4 +118,3 @@ function currentUser(){
   }
 }
 
->>>>>>> e15dd62f4c6f88fe7c5052aaf37671d7ca691b15
