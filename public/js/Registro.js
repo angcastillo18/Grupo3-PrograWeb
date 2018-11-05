@@ -1,19 +1,13 @@
 firebase.auth().onAuthStateChanged(function(user) {
-      var logStatus = document.getElementById("logon");
-      var logStatus2 = document.getElementById("logoff");
-      if (user) {
-        if (verifyMail()==false){
-          logStatus.innerHTML = "No verificado";
-          logStatus.style.backgroundColor = "red";
-          logStatus2.innerHTML="Bienvenido "+ user.email;
-        }else{
-          logStatus.innerHTML = "Verificado";
-          logStatus.style.backgroundColor = "blue";
-        }
-      }else{
-        logStatus.innerHTML = "No ha iniciado sesión";
-      }
-    });
+  if (user) {
+    alert("Usuario creado, verifique el enlace enviado a su correo y entre en la página principal");
+    sendEmailVerification();
+    signOut();
+    window.location.href = 'Index.html';
+  }else{
+        
+  }
+});
   
     
   
@@ -39,15 +33,7 @@ function registro(){
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
       }
-       if (currentUser()==true) {
-        alert("Usuario creado satisfactoriamente");
-        alert("Debe revisar su correo para poder autenticar su identidad. "+
-        "\nEn caso no le llegue haga click donde dice volver a enviar");
-        console.log(currentUser());
-        sendEmailVerification();
-        var name = document.getElementById("name").value;
-        var user = document.getElementById("user").value;
-      }
+       
     });
   }
 }
@@ -118,3 +104,11 @@ function currentUser(){
   }
 }
 
+function signOut(){
+
+  firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
+}
