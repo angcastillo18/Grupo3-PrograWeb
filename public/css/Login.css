@@ -97,3 +97,26 @@ h1,h2,h3,h4,h5,h6{
   padding: 10px;
   color: white;
 }
+
+#log{
+  width: 100%
+}
+
+#logon{
+  color: #f1f1f1;
+  border: 2px solid white;
+  text-align: center;
+  font-size: 20px;
+  width: 9.5%;
+  margin-left: 90%;
+}
+
+#logoff{
+  color: #f1f1f1;
+  border: 2px solid white;
+  text-align: center;
+  font-size: 20px;
+  width: 9.5%;
+  margin-right: 90%;
+  position: absolute;  
+}
