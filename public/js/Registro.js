@@ -1,28 +1,33 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    alert("Usuario creado, verifique el enlace enviado a su correo y entre en la página principal");
-    sendEmailVerification();
-    signOut();
-    window.location.href = 'Index.html';
+    writeDatabase(123,"Alonso18","Alonso Avalo","alonso.avalo96@gmail.com","123456");
+    var uid = user.uid;
+    var user = document.getElementById("user").value;
+    var name = document.getElementById("name").value;
+    var mail = document.getElementById("mail").value;
+    var psw = document.getElementById("psw").value;
+    if (true) {
+      alert("Usuario creado, verifique el enlace enviado a su correo y entre en la página principal");
+      //sendEmailVerification();
+      writeDatabase(uid,user,name,mail,psw);
+      signOut();
+      window.location.href = 'Index.html';
+    }else{
+
+    }
   }else{
         
   }
 });
-  
-    
-  
-
-
-
+ 
 
 function registro(){
-
   if (verificarDatos()===true) {
     var mail = document.getElementById("mail").value;
     var psw = document.getElementById("psw").value;
-
     firebase.auth().createUserWithEmailAndPassword(mail,psw)
     .catch(function(error) {
+
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -33,7 +38,6 @@ function registro(){
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
       }
-       
     });
   }
 }
@@ -98,9 +102,10 @@ function verifyMail(){
 function currentUser(){
   var user = firebase.auth().currentUser;
   if (user) {
-    return true;
+    console.log(user.uid);
+    return user.uid;
   } else {
-    return false;
+    
   }
 }
 
@@ -111,4 +116,19 @@ function signOut(){
 }).catch(function(error) {
   // An error happened.
 });
+}
+
+function readDatabase(){
+  var db = firebase.database();
+
+}
+
+function writeDatabase(uid, username, name, email, psw) {
+  var db =firebase.database().ref();
+  db.set({
+    username: username,
+    name: name,
+    email: email,
+    password: psw
+  });
 }
