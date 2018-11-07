@@ -1,6 +1,13 @@
 {
   "rules": {
+<<<<<<< .merge_file_a07648
     ".read": "auth != null",
     ".write": "auth != null"
+=======
+    "foo": {
+      ".read": true,
+      ".write": false
+    }
+>>>>>>> .merge_file_a09844
   }
 }

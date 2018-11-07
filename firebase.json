@@ -16,7 +16,11 @@
     "rewrites": [
       {
         "source": "**",
+<<<<<<< .merge_file_a16596
         "destination": "/index.html"
+=======
+        "destination": "index.html"
+>>>>>>> .merge_file_a04428
       }
     ]
   },
