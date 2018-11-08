@@ -9,6 +9,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         }else{
           logStatus.innerHTML = "Verificado";
           logStatus.style.backgroundColor = "blue";
+          logStatus2.innerHTML="Bienvenido "+ user.email;
         }
       }else{
         logStatus.innerHTML = "No ha iniciado sesión";
@@ -34,9 +35,6 @@ function login(){
       }
       console.log(error);
     });
-  if (currentUser()==true) {
-    alert("Inicio de sesión correcto");
-  }
 }
 
 
@@ -73,5 +71,13 @@ function currentUser(){
     return true;
   } else {
     return false;
+  }
+}
+
+function change(){
+  if (currentUser()==true) {
+    alert("Tiene una sesión abierta, si quiere registrar un usuario debe cerrar sesión primero");
+  }else{
+    window.location.href = 'registerPage.html';
   }
 }

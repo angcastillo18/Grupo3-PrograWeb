@@ -1,34 +1,37 @@
 firebase.auth().onAuthStateChanged(function(user) {
-      var logStatus = document.getElementById("logon");
-      var logStatus2 = document.getElementById("logoff");
-      if (user) {
-        if (verifyMail()==false){
-          logStatus.innerHTML = "No verificado";
-          logStatus.style.backgroundColor = "red";
-          logStatus2.innerHTML="Bienvenido "+ user.email;
-        }else{
-          logStatus.innerHTML = "Verificado";
-          logStatus.style.backgroundColor = "blue";
-        }
-      }else{
-        logStatus.innerHTML = "No ha iniciado sesión";
-      }
-    });
-  
-    
-  
+  if (user) {
+    var user = document.getElementById("user").value;
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("mail").value;
+    var password = document.getElementById("psw").value;
+    if (true) {
+      alert("Usuario creado, verifique el enlace enviado a su correo y entre en la página principal");
+      //sendEmailVerification();
+      //writeDatabase(user,name,mail,psw);
+      
+      firebase.database().ref('users/' + user).set({
+        name: name,
+        email: email,
+        password: password
+      });
+      signOut();
+      window.location.href = 'Index.html';
+    }else{
 
-
-
+    }
+  }else{
+        
+  }
+});
+ 
 
 function registro(){
-
   if (verificarDatos()===true) {
     var mail = document.getElementById("mail").value;
     var psw = document.getElementById("psw").value;
-
     firebase.auth().createUserWithEmailAndPassword(mail,psw)
     .catch(function(error) {
+
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -38,15 +41,6 @@ function registro(){
         alert('El correo '+mail+" ya está en uso");
       } else if(errorCode == 'auth/invalid-email'){
         alert('Debe ingresar un correo válido');
-      }
-       if (currentUser()==true) {
-        alert("Usuario creado satisfactoriamente");
-        alert("Debe revisar su correo para poder autenticar su identidad. "+
-        "\nEn caso no le llegue haga click donde dice volver a enviar");
-        console.log(currentUser());
-        sendEmailVerification();
-        var name = document.getElementById("name").value;
-        var user = document.getElementById("user").value;
       }
     });
   }
@@ -112,9 +106,47 @@ function verifyMail(){
 function currentUser(){
   var user = firebase.auth().currentUser;
   if (user) {
-    return true;
+    console.log(user.uid);
+    return user.uid;
   } else {
-    return false;
+    
   }
 }
 
+function signOut(){
+
+  firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
+}
+
+
+function writeDatabase(username, name, email, psw) {
+
+  firebase.database().ref('users/' + "uno").set({
+    name: "dos",
+    email: "tres",
+    password: "cuatro"
+  });
+}
+
+function test(){
+  var user = document.getElementById("user").value;
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("mail").value;
+    var password = document.getElementById("psw").value;
+  firebase.database().ref('users/' + user).set({
+    name: name,
+    email: email,
+    password: password
+  });
+  }
+  /*firebase.database().ref('users/' + "userId").set({
+    username: "name",
+    email: "email",
+    profile_picture : "imageUrl"
+  });
+  
+}*/
