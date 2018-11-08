@@ -1,15 +1,19 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    writeDatabase(123,"Alonso18","Alonso Avalo","alonso.avalo96@gmail.com","123456");
-    var uid = user.uid;
     var user = document.getElementById("user").value;
     var name = document.getElementById("name").value;
-    var mail = document.getElementById("mail").value;
-    var psw = document.getElementById("psw").value;
+    var email = document.getElementById("mail").value;
+    var password = document.getElementById("psw").value;
     if (true) {
       alert("Usuario creado, verifique el enlace enviado a su correo y entre en la página principal");
       //sendEmailVerification();
-      writeDatabase(uid,user,name,mail,psw);
+      //writeDatabase(user,name,mail,psw);
+      
+      firebase.database().ref('users/' + user).set({
+        name: name,
+        email: email,
+        password: password
+      });
       signOut();
       window.location.href = 'Index.html';
     }else{
@@ -118,17 +122,31 @@ function signOut(){
 });
 }
 
-function readDatabase(){
-  var db = firebase.database();
 
-}
+function writeDatabase(username, name, email, psw) {
 
-function writeDatabase(uid, username, name, email, psw) {
-  var db =firebase.database().ref();
-  db.set({
-    username: username,
-    name: name,
-    email: email,
-    password: psw
+  firebase.database().ref('users/' + "uno").set({
+    name: "dos",
+    email: "tres",
+    password: "cuatro"
   });
 }
+
+function test(){
+  var user = document.getElementById("user").value;
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("mail").value;
+    var password = document.getElementById("psw").value;
+  firebase.database().ref('users/' + user).set({
+    name: name,
+    email: email,
+    password: password
+  });
+  }
+  /*firebase.database().ref('users/' + "userId").set({
+    username: "name",
+    email: "email",
+    profile_picture : "imageUrl"
+  });
+  
+}*/

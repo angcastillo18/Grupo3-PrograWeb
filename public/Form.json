@@ -10,3 +10,14 @@
       }
    }
 }
+
+
+
+{
+   "uid":{  
+      "userid":"Ada Lovelace",
+      "name":"name",
+      "mail":"mail",
+      "psw":"Lovelace"
+   }
+}
