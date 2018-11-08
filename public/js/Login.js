@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         }
       }else{
         logStatus.innerHTML = "No ha iniciado sesión";
-        logStatus2.style.display("none");
+        
       }
     });
   
