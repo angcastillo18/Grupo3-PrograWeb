@@ -33,7 +33,7 @@
       <div id="logoff">Logueado off</div>
       <div id="logon">Logueado on</div>
     </div>
-    <form class="banner">
+    <form class="banner" onsubmit="login()">
       <h1 class="banner__txt">Grupo 3</h1>
       <div class="login__content">
         <h3 class="login__txt">Ingresar al sistema</h3>
@@ -47,7 +47,7 @@
           <input class="login__password" id="password" type="password" name="password" placeholder="contraseña">
           <br>
           <label id="msg__error" ></label>
-          <button class="button__login" type="submit" name="button" onclick="login()">Ingresar</button>
+          <button class="button__login" type="submit" name="button">Ingresar</button>
           <br>
           <div class="login__forgot-register">
             <a class="login__recovery" href="#">¿Olvidó su contraseña?</a>
