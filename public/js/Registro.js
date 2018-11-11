@@ -2,10 +2,11 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     var user = document.getElementById("user").value;
     var name = document.getElementById("name").value;
+    var lName = document.getElementById("lName").value;
     var email = document.getElementById("mail").value;
     var password = document.getElementById("psw").value;
     if (true) {
-      alert("Usuario creado, verifique el enlace enviado a su correo y entre en la página principal");
+      alert("Bienvenido "+user+", confirma tu cuenta accediendo al link enviado a su correo");
       //sendEmailVerification();
       //writeDatabase(user,name,mail,psw);
       
@@ -49,6 +50,7 @@ function registro(){
 function verificarDatos() {
   var user = document.getElementById("user").value;
   var name = document.getElementById("name").value;
+  var lName = document.getElementById("lName").value;
   var mail = document.getElementById("mail").value;
   var psw = document.getElementById("psw").value;
   var regex = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/;
@@ -63,7 +65,12 @@ function verificarDatos() {
   }
   else if ( name == null || name.length == 0 || /^\s+$/.test(name) ) {
    // Si no se cumple la condicion...
-   alert('Es obligatorio llenar el campo de nombre y apellidos ');
+   alert('Es obligatorio llenar el campo del nombre');
+   return false;
+  }
+  else if ( lName == null || lName.length == 0 || /^\s+$/.test(lName) ) {
+   // Si no se cumple la condicion...
+   alert('Es obligatorio llenar el campo del apellido');
    return false;
   }
   else if ( (regex.test(mail))||mail.length == 0 || mail==null){
@@ -123,30 +130,12 @@ function signOut(){
 }
 
 
-function writeDatabase(username, name, email, psw) {
+function writeDatabase(username,lName, name, email, psw) {
 
-  firebase.database().ref('users/' + "uno").set({
-    name: "dos",
-    email: "tres",
-    password: "cuatro"
+  firebase.database().ref('users/' + username).set({
+    name: name,
+    lName: lName,
+    email: email,
+    password: psw
   });
 }
-
-function test(){
-  var user = document.getElementById("user").value;
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("mail").value;
-    var password = document.getElementById("psw").value;
-  firebase.database().ref('users/' + user).set({
-    name: name,
-    email: email,
-    password: password
-  });
-  }
-  /*firebase.database().ref('users/' + "userId").set({
-    username: "name",
-    email: "email",
-    profile_picture : "imageUrl"
-  });
-  
-}*/
