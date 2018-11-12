@@ -107,3 +107,10 @@ hr {
   margin-right: 88.5%;
   position: absolute;  
 }
+
+#container2 {
+  display: none;
+  font-size: 20px;
+  color: rgb(47, 51, 63);
+
+}

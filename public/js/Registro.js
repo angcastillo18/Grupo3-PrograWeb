@@ -1,39 +1,34 @@
+document.getElementById('registerForm').addEventListener('submit',registro);
+
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    var user = document.getElementById("user").value;
-    var name = document.getElementById("name").value;
-    var lName = document.getElementById("lName").value;
-    var email = document.getElementById("mail").value;
-    var password = document.getElementById("psw").value;
-    if (true) {
-      alert("Bienvenido "+user+", confirma tu cuenta accediendo al link enviado a su correo");
-      //sendEmailVerification();
-      //writeDatabase(user,name,mail,psw);
-      
-      firebase.database().ref('users/' + user).set({
-        name: name,
-        email: email,
-        password: password
-      });
-      signOut();
-      window.location.href = 'Index.html';
-    }else{
-
-    }
-  }else{
-        
+    // User is signed in.
+  } else {
+    // No user is signed in.
   }
-});
- 
+}); 
 
-function registro(){
+function registro(e){
+  e.preventDefault();
+  var username = document.getElementById("username").value;
+  var name = document.getElementById("name").value;
+  var lName = document.getElementById("lName").value;
+  var mail = document.getElementById("mail").value;
+  var psw = document.getElementById("psw").value;
   if (verificarDatos()===true) {
-    var mail = document.getElementById("mail").value;
-    var psw = document.getElementById("psw").value;
-    firebase.auth().createUserWithEmailAndPassword(mail,psw)
-    .catch(function(error) {
-
-      // Handle Errors here.
+    
+    firebase.auth().createUserWithEmailAndPassword(mail,psw).then(function(user) {
+      //alert("Usuario creado satisfactoriamente, se le ha enviado un correo de verificación "+
+      //" al correo "+mail); 
+      
+      console.log(username+" "+name+" "+lName+" "+mail+" "+psw);
+      writeDatabase(username,name,lName,mail,psw);
+      document.getElementById('registerForm').reset();
+      displayOff('container');
+      displayOn('container2');
+      
+    }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode == 'auth/weak-password') {
@@ -47,8 +42,19 @@ function registro(){
   }
 }
 
+function displayOn(value){
+  document.getElementById(value).style.display='block';
+  document.getElementById(value).innerHTML='Usuario creado satisfactoriamente,'
+       +' revise su correo para comprobar su cuenta.';
+}
+
+function displayOff(value){
+  document.getElementById(value).style.display='none';
+
+}
+
 function verificarDatos() {
-  var user = document.getElementById("user").value;
+  var username = document.getElementById("username").value;
   var name = document.getElementById("name").value;
   var lName = document.getElementById("lName").value;
   var mail = document.getElementById("mail").value;
@@ -58,7 +64,7 @@ function verificarDatos() {
     alert("Debe cerrar sesión para poder crear una nueva cuenta.")
     return false;
   }
-  else if ( (user == null || user.length == 0 || /^\s+$/.test(user)) ) {
+  else if ( (username == null || username.length == 0 || /^\s+$/.test(username)) ) {
    // Si no se cumple la condicion...
    alert('Es obligatorio indicar el nombre de usuario que desea usar');
    return false;
@@ -113,7 +119,7 @@ function verifyMail(){
 function currentUser(){
   var user = firebase.auth().currentUser;
   if (user) {
-    console.log(user.uid);
+    
     return user.uid;
   } else {
     
@@ -130,12 +136,12 @@ function signOut(){
 }
 
 
-function writeDatabase(username,lName, name, email, psw) {
+function writeDatabase(username,name, lName, mail, psw) {
 
   firebase.database().ref('users/' + username).set({
     name: name,
     lName: lName,
-    email: email,
-    password: psw
+    mail: mail,
+    psw: psw
   });
 }

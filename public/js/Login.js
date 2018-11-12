@@ -1,3 +1,5 @@
+document.getElementById('loginForm').addEventListener('submit',login);
+
 firebase.auth().onAuthStateChanged(function(user) {
       var logStatus = document.getElementById("logon");
       var logStatus2 = document.getElementById("logoff");
@@ -17,24 +19,26 @@ firebase.auth().onAuthStateChanged(function(user) {
       }
     });
   
-function login(){
-  var email = document.getElementById("username").value;
-  var contra = document.getElementById("password").value;
-  console.log(email+contra);
-  firebase.auth().signInWithEmailAndPassword(email, contra)
-    .catch(function(error) {
+function login(e){
+  e.preventDefault();
+  var username = document.getElementById("username").value;
+  var psw = document.getElementById("psw").value;
+  firebase.auth().signInWithEmailAndPassword(email, psw).then(function(user) {
+    
+
+  }).catch(function(error) {
     // Handle Errors here.
-      var errorCode = error.code;
+    var errorCode = error.code;
       var errorMessage = error.message;
-      if (errorCode === ('auth/wrong-password')) {
+    if (errorCode === ('auth/wrong-password')) {
         alert('La contraseña o usuario que ha ingresado es inválido.'+'\nInténtelo nuevamente.');
-      } else if(errorCode === 'auth/user-not-found'){
+    } else if(errorCode === 'auth/user-not-found'){
         alert('El siguiente usuario no se encuentra registrado');
-      } else if(errorCode==="auth/invalid-email"){
+    } else if(errorCode==="auth/invalid-email"){
         alert('La contraseña o usuario que ha ingresado es inválido.'+'\nInténtelo nuevamente.');
-      }
+    }
       console.log(error);
-    });
+  });
 }
 
 
@@ -80,4 +84,13 @@ function change(){
   }else{
     window.location.href = 'registerPage.html';
   }
+}
+
+function cerrar(){
+
+  firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
 }

@@ -30,10 +30,10 @@
   </head>
   <body>
     <div id="log">
-      <div id="logoff">Logueado off</div>
+      <div id="logoff" onclick="cerrar()">Logueado off</div>
       <div id="logon">Logueado on</div>
     </div>
-    <form class="banner" onsubmit="login()">
+    <form class="banner" id="loginForm">
       <h1 class="banner__txt">Grupo 3</h1>
       <div class="login__content">
         <h3 class="login__txt">Ingresar al sistema</h3>
@@ -59,7 +59,7 @@
         <p class="footer__copy">&copy; Grupo 3 - Todos los derechos reservados</p>
       </footer>
     </form>
-    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script>
   // Initialize Firebase
       var config = {

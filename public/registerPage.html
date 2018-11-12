@@ -28,22 +28,22 @@
   </head>
   <body>
     <h1 class="banner__txt">Crear cuenta</h1>
-    <form action="#" method="post" id="form" onsubmit="registro()">
-    <div class="container">
+    <form method="post"  id="registerForm">
+    <div class="container" id="container">
 
     <label class="register__txt" for="usuario">Usuario :</label>
-    <input type="text" placeholder="Usuario" name="usuario" id="user">
+    <input type="text" placeholder="Usuario" name="username" id="username">
 
-    <label class="register__txt" for="nomape">Nombres y apellidos :</label>
+    <label class="register__txt" for="nomape">Nombre :</label>
     <input type="text" placeholder="Nombre" name="nomape" id="name">
 
-    <label class="register__txt" for="lName">Nombres y apellidos :</label>
+    <label class="register__txt" for="lName">Apellido :</label>
     <input type="text" placeholder="Apellido" name="lName" id="lName">
 
     <label class="register__txt" for="email">Correo electrónico :</label>
     <input type="text" placeholder="Correo electrónico" name="email" id="mail">
   
-    <label class="register__txt" for="password">Contraseña :</label>
+    <label class="register__txt" for="psw">Contraseña :</label>
     <input type="password" placeholder="Contraseña" name="psw" id="psw">
     <hr>
 
@@ -55,8 +55,12 @@
       <a class="register__forgot" href="#">Olvidó su contraseña?</a>
     </div>
     </div>
+    <div class='container' >
+      <label id='label'></label>
+      <button type="button" onclick="window.location.href='index.html'" id='returnButton' class="registerbtn">Regresar a la página de inicio</button>
+    </div>
   </form>
-  <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script>
   // Initialize Firebase
     var config = {
