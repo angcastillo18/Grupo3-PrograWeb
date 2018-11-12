@@ -30,12 +30,11 @@
   </head>
   <body>
     <div id="log">
-      <div id="logoff" onclick="cerrar()">Logueado off</div>
-      <div id="logon">Logueado on</div>
+      <button id="logoff" onclick="cerrar()">Cerrar sesión</button>
     </div>
     <form class="banner" id="loginForm">
       <h1 class="banner__txt">Grupo 3</h1>
-      <div class="login__content">
+      <div class="login__content" id="container">
         <h3 class="login__txt">Ingresar al sistema</h3>
         <div class="login_form" method="post">
           <i class="icon">-</i>
@@ -44,7 +43,7 @@
           <br><br>
           <i class="icon">-</i>
           <label class="lbl">Contraseña:</label> <br>
-          <input class="login__password" id="password" type="password" name="password" placeholder="contraseña">
+          <input class="login__password" id="psw" type="password" name="password" placeholder="contraseña">
           <br>
           <label id="msg__error" ></label>
           <button class="button__login" type="submit" name="button">Ingresar</button>
@@ -59,6 +58,13 @@
         <p class="footer__copy">&copy; Grupo 3 - Todos los derechos reservados</p>
       </footer>
     </form>
+    <div class="login_content" id="cont">
+      <label class="lbl">Bienvenido, para mostrar la lista de usuarios, haga click en el botón de abajo</label>
+      <button type="button" name="button" onclick="window.location.href='main.html'" id='mainButton' class="button__login">Continuar</button>
+    </div>
+    
+    <div class="login__content" id="cont2">Bienvenido, si desea ver la lista de usuarios, primero debe verificar su correo
+    </div>
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script>
   // Initialize Firebase

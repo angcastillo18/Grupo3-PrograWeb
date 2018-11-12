@@ -102,21 +102,47 @@ h1,h2,h3,h4,h5,h6{
   width: 100%
 }
 
-#logon{
-  color: #f1f1f1;
-  border: 2px solid white;
+#logoff{
+  color: white;
+  
   text-align: center;
   font-size: 20px;
-  width: 9.5%;
+  width: 12%;
+  border-color: black solid 3px;
   margin-left: 90%;
+  background-color:rgb(212, 0, 0); 
 }
 
-#logoff{
-  color: #f1f1f1;
-  border: 2px solid white;
+#status{
+  color: white;
+  
   text-align: center;
   font-size: 20px;
-  width: 9.5%;
+  width: 12%;
   margin-right: 90%;
-  position: absolute;  
+  position: absolute;
+  background-color:rgb(212, 0, 0);  
+}
+
+#cont{
+  display: none;
+  margin: 25%;
+  font-size: 20px;
+  color: rgb(47, 51, 63);
+  background-color: white;
+  
+  font-size: 20px;
+  width: 50%;
+  height: 50%;
+}
+
+#cont2{
+  display: none;
+  padding: 16px;
+  background-color: white;
+  max-width: 800px;
+  width: 40%;
+  margin: auto;
+  border-radius: 10px;
+  font-size: 20px;
 }

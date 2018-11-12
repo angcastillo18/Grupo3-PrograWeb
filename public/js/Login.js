@@ -1,29 +1,32 @@
-document.getElementById('loginForm').addEventListener('submit',login);
+document.getElementById('loginForm').addEventListener('submit',returnMail);
 
 firebase.auth().onAuthStateChanged(function(user) {
-      var logStatus = document.getElementById("logon");
-      var logStatus2 = document.getElementById("logoff");
       if (user) {
+        
+        displayOff("container")
+        
         if (verifyMail()==false){
-          logStatus.innerHTML = "No verificado";
-          logStatus.style.backgroundColor = "red";
-          logStatus2.innerHTML="Bienvenido "+ user.displayName;
+          logoff.style.backgroundColor = "red";
+          displayOn("cont")  
+          displayOn("logoff");
         }else{
-          logStatus.innerHTML = "Verificado";
-          logStatus.style.backgroundColor = "blue";
-          logStatus2.innerHTML="Bienvenido "+ user.email;
+          logoff.style.backgroundColor = "blue";
+          displayOn("cont2")
+          displayOn("logoff");
         }
       }else{
-        logStatus.innerHTML = "No ha iniciado sesión";
         
+       displayOn("cont") 
       }
     });
   
-function login(e){
-  e.preventDefault();
-  var username = document.getElementById("username").value;
+function login(mail){
+  
   var psw = document.getElementById("psw").value;
-  firebase.auth().signInWithEmailAndPassword(email, psw).then(function(user) {
+
+  
+  console.log(mail);
+  firebase.auth().signInWithEmailAndPassword(mail, psw).then(function(user) {
     
 
   }).catch(function(error) {
@@ -41,7 +44,17 @@ function login(e){
   });
 }
 
-
+function returnMail(e){
+  e.preventDefault();
+  var username = document.getElementById("username").value;
+  var ref = firebase.database().ref('users/'+username);
+  ref.once("value").then (function(snapshot) {
+    var mail = snapshot.child('mail').val();
+    login(mail);
+  }, function (error) {
+   console.log("Error: " + error.code);
+  });
+}
 
 
 
@@ -93,4 +106,14 @@ function cerrar(){
 }).catch(function(error) {
   // An error happened.
 });
+}
+
+function displayOn(value){
+  document.getElementById(value).style.display='block';
+  
+}
+
+function displayOff(value){
+  document.getElementById(value).style.display='none';
+
 }

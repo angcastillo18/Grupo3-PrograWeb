@@ -9,6 +9,11 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 }); 
 
+function tryss(){
+  displayOff('container');
+      displayOn('container2');
+}
+
 function registro(e){
   e.preventDefault();
   var username = document.getElementById("username").value;
@@ -19,8 +24,6 @@ function registro(e){
   if (verificarDatos()===true) {
     
     firebase.auth().createUserWithEmailAndPassword(mail,psw).then(function(user) {
-      //alert("Usuario creado satisfactoriamente, se le ha enviado un correo de verificación "+
-      //" al correo "+mail); 
       
       console.log(username+" "+name+" "+lName+" "+mail+" "+psw);
       writeDatabase(username,name,lName,mail,psw);
@@ -44,8 +47,7 @@ function registro(e){
 
 function displayOn(value){
   document.getElementById(value).style.display='block';
-  document.getElementById(value).innerHTML='Usuario creado satisfactoriamente,'
-       +' revise su correo para comprobar su cuenta.';
+  
 }
 
 function displayOff(value){
