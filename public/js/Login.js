@@ -24,6 +24,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 function login(mail){
   var psw = document.getElementById("psw").value;
   console.log(mail);
+  if (mail==null) {
+    alert("El usuario que ha ingresado no existe");
+  }
   firebase.auth().signInWithEmailAndPassword(mail, psw).then(function(user) {
     
 
@@ -37,7 +40,7 @@ function login(mail){
         alert('El siguiente usuario no se encuentra registrado');
     } else if(errorCode==="auth/invalid-email"){
         alert('La contraseña o usuario que ha ingresado es inválido.'+'\nInténtelo nuevamente.');
-    }
+    }else
       console.log(error);
   });
 }

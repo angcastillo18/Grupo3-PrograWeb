@@ -12,13 +12,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     } else {
     	document.getElementById("cuerpo").style.display="block";
-  		alert("Debe verificar su correo para acceder a esta información");
-  		location.href ='index.html';
+  		//alert("Debe verificar su correo para acceder a esta información");
+  		//location.href ='index.html';
     }
   } else {
   	document.getElementById("cuerpo").style.display="block";
-  	alert("Debe iniciar sesión para acceder a esta información");
-  	location.href ='index.html';
+  	//alert("Debe iniciar sesión para acceder a esta información");
+  	//location.href ='index.html';
   }
 });
 
@@ -38,10 +38,25 @@ function verifyMail(){
 
 
 function mostrarLista(){
-  var ref = firebase.database().getInstance.getReference.child('users');
-  ref.on("value").then (function(snapshot) {
-    var a =
-  }, function (error) {
-   console.log("Error: " + error.code);
+  var tabla =document.createElement("table");
+  
+
+
+  var query = firebase.database().ref("users").orderByKey();
+    query.once("value").then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+      console.log(query);
+      var user = document.createElement("tr");
+      var key = childSnapshot.key;
+      user.innerHTML=key;
+      var childData = childSnapshot.val();
+      for(i in childData){
+        var data = document.createElement("td");
+        data.innerHTML=childData[i];  
+        user.appendChild(data);
+      }
+      tabla.appendChild(user);  
+    });
   });
+  document.getElementById("cuerpo").appendChild(tabla);
 }
