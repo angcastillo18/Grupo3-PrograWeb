@@ -40,7 +40,7 @@ function verifyMail(){
 function mostrarLista(){
   var ref = firebase.database().getInstance.getReference.child('users');
   ref.on("value").then (function(snapshot) {
-    snapshot.val();
+    var a =
   }, function (error) {
    console.log("Error: " + error.code);
   });

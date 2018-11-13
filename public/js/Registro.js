@@ -147,3 +147,7 @@ function writeDatabase(username,name, lName, mail, psw) {
     psw: psw
   });
 }
+
+function registrarDB(){
+  
+}

@@ -5,26 +5,24 @@ firebase.auth().onAuthStateChanged(function(user) {
         
         displayOff("container")
         
-        if (verifyMail()==false){
-          logoff.style.backgroundColor = "red";
+        if (verifyMail()==true){
+          logoff.style.backgroundColor = "blue";
           displayOn("cont")  
           displayOn("logoff");
         }else{
-          logoff.style.backgroundColor = "blue";
+          logoff.style.backgroundColor = "red";
           displayOn("cont2")
           displayOn("logoff");
         }
       }else{
-        
-       displayOn("cont") 
+        displayOff("cont")
+        displayOff("cont2")
+       displayOn("container") 
       }
     });
   
 function login(mail){
-  
   var psw = document.getElementById("psw").value;
-
-  
   console.log(mail);
   firebase.auth().signInWithEmailAndPassword(mail, psw).then(function(user) {
     
