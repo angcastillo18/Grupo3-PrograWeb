@@ -39,23 +39,35 @@ function verifyMail(){
 
 function mostrarLista(){
   var tabla =document.createElement("table");
-  
-
-
+  var td = document.createElement('td');
+  var tr = document.createElement('tr');
+  var array = ["Usuario","Apellido","Correo","Nombre","Contraseña"];
+  var th = document.createElement("th");
+  var thead = document.createElement("thead");
+  var tbody = document.createElement("tbody");
+  for (i = 0; i < array.length; i++) { 
+    th = document.createElement('th')
+    th.innerHTML=array[i];
+    tr.appendChild(th);
+  }
+  thead.appendChild(tr);
+  tabla.appendChild(thead);
   var query = firebase.database().ref("users").orderByKey();
     query.once("value").then(function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
-      console.log(query);
-      var user = document.createElement("tr");
+      tr = document.createElement("tr")
       var key = childSnapshot.key;
-      user.innerHTML=key;
+      td = document.createElement('td');
+      td.innerHTML=key;
+      tr.appendChild(td);
       var childData = childSnapshot.val();
       for(i in childData){
-        var data = document.createElement("td");
-        data.innerHTML=childData[i];  
-        user.appendChild(data);
+        td = document.createElement("td");
+        td.innerHTML=childData[i];
+        tr.appendChild(td);
       }
-      tabla.appendChild(user);  
+      tbody.appendChild(tr);
+      tabla.appendChild(tbody);
     });
   });
   document.getElementById("cuerpo").appendChild(tabla);
