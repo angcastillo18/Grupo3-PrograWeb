@@ -11,14 +11,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (verifyMail()==true) {
 
     } else {
-    	document.getElementById("cuerpo").style.display="block";
-  		//alert("Debe verificar su correo para acceder a esta información");
-  		//location.href ='index.html';
+    	document.getElementById("cuerpo").style.display="none";
+  		alert("Debe verificar su correo para acceder a esta información");
+  		location.href ='index.html';
     }
   } else {
-  	document.getElementById("cuerpo").style.display="block";
+  	document.getElementById("cuerpo").style.display="none";
   	//alert("Debe iniciar sesión para acceder a esta información");
-  	//location.href ='index.html';
+  	location.href ='index.html';
   }
 });
 

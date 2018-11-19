@@ -18,6 +18,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         displayOff("cont")
         displayOff("cont2")
        displayOn("container") 
+       displayOff("logoff");
       }
     });
   
