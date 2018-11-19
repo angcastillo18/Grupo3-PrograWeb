@@ -110,19 +110,10 @@ h1,h2,h3,h4,h5,h6{
   width: 12%;
   border-color: black solid 3px;
   margin-left: 88%;
-  background-color:rgb(212, 0, 0); 
+  background-color:rgb(47, 51, 63);
+  display: none;
 }
 
-#status{
-  color: white;
-  
-  text-align: center;
-  font-size: 20px;
-  width: 12%;
-  margin-right: 90%;
-  position: absolute;
-  background-color:rgb(212, 0, 0);  
-}
 
 
 #container{

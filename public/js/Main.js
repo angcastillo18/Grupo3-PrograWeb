@@ -1,26 +1,35 @@
 function cerrarSesion(){
+  window.location.href = 'index.html';
   firebase.auth().signOut().then(function() {
   // Sign-out successful.
+  
 	}).catch(function(error) {
 		alert("Un error no identificado ha ocurrido")
-});
- }
+  });
+}
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+    displayOn("logoff");
     if (verifyMail()==true) {
-
+      mostrarLista();
     } else {
-    	document.getElementById("cuerpo").style.display="block";
-  		//alert("Debe verificar su correo para acceder a esta información");
-  		//location.href ='index.html';
+    	alert("Debes verificar tu correo para ver la lista de usuarios")
     }
   } else {
-  	document.getElementById("cuerpo").style.display="block";
-  	//alert("Debe iniciar sesión para acceder a esta información");
-  	//location.href ='index.html';
+  	alert("Debes estar registrado para ver la lista de usuarios")
   }
 });
+
+function displayOn(value){
+  document.getElementById(value).style.display='block';
+  
+}
+
+function displayOff(value){
+  document.getElementById(value).style.display='none';
+
+}
 
 
 function verifyMail(){
