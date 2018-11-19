@@ -1,3 +1,5 @@
+
+//Se cierra sesión
 function cerrarSesion(){
   window.location.href = 'index.html';
   firebase.auth().signOut().then(function() {
@@ -8,29 +10,23 @@ function cerrarSesion(){
   });
 }
 
+
+//Maneja la sesión del usuario
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     displayOn("logoff");
     if (verifyMail()==true) {
       mostrarLista();
+      //Solo si está conectado y tiene el correo verificado, puede ver la lista de usuarios
     } else {
-<<<<<<< HEAD:public/js/Home.js
-    	document.getElementById("cuerpo").style.display="none";
-  		alert("Debe verificar su correo para acceder a esta información");
-  		location.href ='index.html';
+      alert("Debes verificar tu correo para ver la lista de usuarios")
+      window.location.href = 'index.html';
     }
   } else {
-  	document.getElementById("cuerpo").style.display="none";
-  	//alert("Debe iniciar sesión para acceder a esta información");
-  	location.href ='index.html';
-=======
-    	alert("Debes verificar tu correo para ver la lista de usuarios")
-    }
-  } else {
-  	alert("Debes estar registrado para ver la lista de usuarios")
->>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb:public/js/Main.js
+    window.location.href = 'index.html';
   }
 });
+
 
 function displayOn(value){
   document.getElementById(value).style.display='block';
@@ -56,7 +52,8 @@ function verifyMail(){
   }
 }
 
-
+//Nos permite mostrar la lista
+//Recorremos la base de datos y usamos sus valores de acuerdo a lo que se quiera mostrar
 function mostrarLista(){
   var tabla =document.createElement("table");
   var td = document.createElement('td');
