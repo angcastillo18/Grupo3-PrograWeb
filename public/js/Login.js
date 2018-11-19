@@ -15,17 +15,17 @@ firebase.auth().onAuthStateChanged(function(user) {
           displayOn("logoff");
         }
       }else{
-<<<<<<< HEAD
+
         displayOff("cont")
         displayOff("cont2")
        displayOn("container") 
        displayOff("logoff");
-=======
+
         displayOff("cont");
         displayOff("cont2");
        displayOn("container");
        displayOff("logoff"); 
->>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb
+
       }
     });
   

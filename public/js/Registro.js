@@ -4,10 +4,10 @@ document.getElementById('registerForm').addEventListener('submit',registro);
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     
-<<<<<<< HEAD
+
       
-=======
->>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb
+
+
   } else {
     // No user is signed in.
   }
@@ -27,11 +27,10 @@ function registro(e){
       document.getElementById('registerForm').reset();
       displayOff('container');
       displayOn('container2');
-<<<<<<< HEAD
+
       sendEmailVerification();
       
-=======
->>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb
+
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
