@@ -1,16 +1,20 @@
 function cerrarSesion(){
+  window.location.href = 'index.html';
   firebase.auth().signOut().then(function() {
   // Sign-out successful.
+  
 	}).catch(function(error) {
 		alert("Un error no identificado ha ocurrido")
-});
- }
+  });
+}
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+    displayOn("logoff");
     if (verifyMail()==true) {
-
+      mostrarLista();
     } else {
+<<<<<<< HEAD:public/js/Home.js
     	document.getElementById("cuerpo").style.display="none";
   		alert("Debe verificar su correo para acceder a esta información");
   		location.href ='index.html';
@@ -19,8 +23,24 @@ firebase.auth().onAuthStateChanged(function(user) {
   	document.getElementById("cuerpo").style.display="none";
   	//alert("Debe iniciar sesión para acceder a esta información");
   	location.href ='index.html';
+=======
+    	alert("Debes verificar tu correo para ver la lista de usuarios")
+    }
+  } else {
+  	alert("Debes estar registrado para ver la lista de usuarios")
+>>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb:public/js/Main.js
   }
 });
+
+function displayOn(value){
+  document.getElementById(value).style.display='block';
+  
+}
+
+function displayOff(value){
+  document.getElementById(value).style.display='none';
+
+}
 
 
 function verifyMail(){

@@ -4,16 +4,14 @@ document.getElementById('registerForm').addEventListener('submit',registro);
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     
+<<<<<<< HEAD
       
+=======
+>>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb
   } else {
     // No user is signed in.
   }
 }); 
-
-function tryss(){
-  displayOff('container');
-      displayOn('container2');
-}
 
 function registro(e){
   e.preventDefault();
@@ -22,17 +20,18 @@ function registro(e){
   var lName = document.getElementById("lName").value;
   var mail = document.getElementById("mail").value;
   var psw = document.getElementById("psw").value;
+  
   if (verificarDatos()===true) {
-    
     firebase.auth().createUserWithEmailAndPassword(mail,psw).then(function(user) {
-      
-      console.log(username+" "+name+" "+lName+" "+mail+" "+psw);
       writeDatabase(username,name,lName,mail,psw);
       document.getElementById('registerForm').reset();
       displayOff('container');
       displayOn('container2');
+<<<<<<< HEAD
       sendEmailVerification();
       
+=======
+>>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb
     }).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -64,6 +63,8 @@ function verificarDatos() {
   var mail = document.getElementById("mail").value;
   var psw = document.getElementById("psw").value;
   var regex = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/;
+  var existe = false;
+
   if (currentUser()==true) {
     alert("Debe cerrar sesión para poder crear una nueva cuenta.")
     return false;
@@ -100,11 +101,11 @@ function verificarDatos() {
 
 function sendEmailVerification(){
   var user = firebase.auth().currentUser;
-user.sendEmailVerification().then(function() {
-  // Email sent.
-}).catch(function(error) {
-  // An error happened.
-});
+  user.sendEmailVerification().then(function() {
+    // Email sent.
+  }).catch(function(error) {
+    // An error happened.
+  });
 }
 
 function verifyMail(){
@@ -130,16 +131,6 @@ function currentUser(){
   }
 }
 
-function signOut(){
-
-  firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
-});
-}
-
-
 function writeDatabase(username,name, lName, mail, psw) {
 
   firebase.database().ref('users/' + username).set({
@@ -151,5 +142,30 @@ function writeDatabase(username,name, lName, mail, psw) {
 }
 
 function registrarDB(){
-  
+  var query = firebase.database().ref("users").orderByKey();
+  query.once("value").then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var key = childSnapshot.key;
+      var childData = childSnapshot.val();
+        var mail = childData["mail"];
+        var psw = childData["psw"]+"";
+        console.log(mail);
+        console.log(psw);
+        firebase.auth().createUserWithEmailAndPassword(mail,psw).then(function(user) {
+        
+        }).catch(function(error) {
+        });
+    });
+  });    
+}
+
+
+
+
+
+function verificarUsuario(usuario){
+  firebase.auth().createUserWithEmailAndPassword(mail,psw).then(function(user) {
+
+    }).catch(function(error) {
+      });
 }

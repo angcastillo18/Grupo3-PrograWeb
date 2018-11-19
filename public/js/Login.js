@@ -6,19 +6,26 @@ firebase.auth().onAuthStateChanged(function(user) {
         displayOff("container")
         
         if (verifyMail()==true){
-          logoff.style.backgroundColor = "blue";
+          
           displayOn("cont")  
           displayOn("logoff");
         }else{
-          logoff.style.backgroundColor = "red";
+          
           displayOn("cont2")
           displayOn("logoff");
         }
       }else{
+<<<<<<< HEAD
         displayOff("cont")
         displayOff("cont2")
        displayOn("container") 
        displayOff("logoff");
+=======
+        displayOff("cont");
+        displayOff("cont2");
+       displayOn("container");
+       displayOff("logoff"); 
+>>>>>>> 594b1086fffa3bdd1a2a7c79a69f81c249dd14fb
       }
     });
   
