@@ -22,7 +22,7 @@ document.getElementById('registerForm').addEventListener('submit',registro);
 //Si ya está logueado, no puede acceder y se le redirecciona a la página principal
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    window.location.href = ('index.html');
+    
 } else {
     // No user is signed in.
   }

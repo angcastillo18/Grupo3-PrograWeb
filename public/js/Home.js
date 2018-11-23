@@ -74,7 +74,7 @@ function mostrarLista(){
   var tabla =document.createElement("table");
   var td = document.createElement('td');
   var tr = document.createElement('tr');
-  var array = ["Usuario","Apellido","Correo","Nombre","Contraseña"];
+  var array = ["Usuario","Nombre","Apellido","Correo"];
   var th = document.createElement("th");
   var thead = document.createElement("thead");
   var tbody = document.createElement("tbody");
@@ -94,11 +94,24 @@ function mostrarLista(){
       td.innerHTML=key;
       tr.appendChild(td);
       var childData = childSnapshot.val();
-      for(i in childData){
+      /*for(i in (childData)){
         td = document.createElement("td");
         td.innerHTML=childData[i];
         tr.appendChild(td);
-      }
+
+      }*/
+      td = document.createElement("td");
+      td.innerHTML=childData['name'];
+      tr.appendChild(td);
+
+      td = document.createElement("td");
+      td.innerHTML=childData['lName'];
+      tr.appendChild(td);
+
+      td = document.createElement("td");
+      td.innerHTML=childData['mail'];
+      tr.appendChild(td);
+
       tbody.appendChild(tr);
       tabla.appendChild(tbody);
     });
